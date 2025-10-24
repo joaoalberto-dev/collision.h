@@ -5,8 +5,12 @@
 
 void test_point_point(void)
 {
-    assert(point_point(1, 1, 1, 1) == 1);
-    assert(point_point(1, 1, 2, 2) == 0);
+    struct Point p1 = {.x = 1, .y = 1};
+    struct Point p2 = {.x = 2, .y = 2};
+
+    assert(point_point(p1, p1) == 1);
+    assert(point_point(p1, p2) == 0);
+
     printf("✓ test_point_point passed\n");
 }
 

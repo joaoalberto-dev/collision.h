@@ -1,13 +1,19 @@
 #ifndef COLLISION_H
 #define COLLISION_H
 
-int point_point(int x1, int y1, int x2, int y2);
+typedef struct Point
+{
+    float x;
+    float y;
+} Point;
+
+int point_point(Point p1, Point p2);
 
 #ifdef COLLISION_IMPLEMENTATION
 
-int point_point(int x1, int y1, int x2, int y2)
+int point_point(Point p1, Point p2)
 {
-    return x1 == x2 && y1 == y2;
+    return p1.x == p2.x && p1.y == p2.y;
 }
 
 #endif
