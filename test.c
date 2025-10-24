@@ -5,8 +5,8 @@
 
 void test_point_point(void)
 {
-    struct Point p1 = {.x = 1, .y = 1};
-    struct Point p2 = {.x = 2, .y = 2};
+    Point p1 = {.x = 1, .y = 1};
+    Point p2 = {.x = 2, .y = 2};
 
     assert(point_point(p1, p1) == 1);
     assert(point_point(p1, p2) == 0);
