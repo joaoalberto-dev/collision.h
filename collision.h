@@ -1,13 +1,13 @@
 #ifndef COLLISION_H
 #define COLLISION_H
 
-int point_point(int p1_x, int p1_y, int p2_x, int p2_y);
+int point_point(int x1, int y1, int x2, int y2);
 
 #ifdef COLLISION_IMPLEMENTATION
 
-int point_point(int p1_x, int p1_y, int p2_x, int p2_y)
+int point_point(int x1, int y1, int x2, int y2)
 {
-    return p1_x == p2_x && p1_y == p2_y;
+    return x1 == x2 && y1 == y2;
 }
 
 #endif
