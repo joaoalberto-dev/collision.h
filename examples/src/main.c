@@ -6,7 +6,7 @@
 
 const int DPI = 2;
 
-static inline Point toPoint(struct Vector2 vec)
+static inline Point to_point(struct Vector2 vec)
 {
 	return (Point){vec.x, vec.y};
 }
@@ -20,15 +20,15 @@ int main()
 	while (!WindowShouldClose())
 	{
 
-		float centerX = GetRenderWidth() / 2 / DPI;
-		float centerY = GetRenderHeight() / 2 / DPI;
+		float center_x = GetRenderWidth() / 2 / DPI;
+		float center_y = GetRenderHeight() / 2 / DPI;
 
 		Vector2 mouse = GetMousePosition();
-		int is_colliding = point_point(toPoint(mouse), (Point){.x = centerX, .y = centerY});
+		int is_colliding = point_point(to_point(mouse), (Point){.x = center_x, .y = center_y});
 
 		BeginDrawing();
 		ClearBackground(BLACK);
-		DrawCircle(centerX, centerY, 10, RED);
+		DrawCircle(center_x, center_y, 10, RED);
 		DrawCircle(mouse.x, mouse.y, 10, is_colliding ? BLUE : RED);
 		EndDrawing();
 	}
