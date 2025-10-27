@@ -23,11 +23,12 @@ int main()
 		float center_y = GetRenderHeight() / 2 / DPI;
 
 		Vector2 mouse = GetMousePosition();
-		int is_colliding = point_circle(to_point(mouse), (Point){.x = center_x, .y = center_y}, 100);
+		int is_colliding = circle_circle(to_point(mouse), 100, (Point){.x = center_x, .y = center_y}, 100);
 
 		BeginDrawing();
 		ClearBackground(BLACK);
 		DrawCircle(center_x, center_y, 100, is_colliding ? BLUE : RED);
+		DrawCircle(mouse.x, mouse.y, 100, is_colliding ? BLUE : RED);
 		EndDrawing();
 	}
 
