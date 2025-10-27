@@ -42,11 +42,22 @@ void test_circle_circle(void)
     printf("✓ test_circle_circle passed\n");
 }
 
+void test_point_rectangle(void)
+{
+    Point p = {.x = 10, .y = 10};
+
+    assert(point_rectangle(p, 20, 20, 10, 10) == 0);
+    assert(point_rectangle(p, 5, 5, 10, 10) == 1);
+
+    printf("✓ test_point_rectangle passed\n");
+}
+
 int main(void)
 {
     test_point_point();
     test_point_circle();
     test_circle_circle();
+    test_point_rectangle();
 
     printf("✓ All tests passed\n");
 }

@@ -12,6 +12,7 @@ typedef struct Point
 int point_point(Point p1, Point p2);
 int point_circle(Point p, Point c, float r);
 int circle_circle(Point c1, float r1, Point c2, float r2);
+int point_rectangle(Point p, float rx, float ry, float rw, float rh);
 
 #ifdef COLLISION_IMPLEMENTATION
 
@@ -36,6 +37,11 @@ int circle_circle(Point c1, float r1, Point c2, float r2)
     float distance = sqrt((distX * distX) + (distY * distY));
 
     return (r1 + r2) > distance;
+}
+
+int point_rectangle(Point p, float rx, float ry, float rw, float rh)
+{
+    return (p.x > rx && p.x < rx + rw && p.y > ry && p.y < ry + rh);
 }
 
 #endif
