@@ -30,9 +30,23 @@ void test_point_circle(void)
     printf("✓ test_point_circle passed\n");
 }
 
+void test_circle_circle(void)
+{
+    Point c1 = {.x = 10, .y = 10};
+    Point c2 = {.x = 50, .y = 50};
+    Point c3 = {.x = 20, .y = 20};
+
+    assert(circle_circle(c1, 10, c2, 10) == 0);
+    assert(circle_circle(c1, 10, c3, 10) == 1);
+
+    printf("✓ test_circle_circle passed\n");
+}
+
 int main(void)
 {
     test_point_point();
     test_point_circle();
+    test_circle_circle();
+
     printf("✓ All tests passed\n");
 }
