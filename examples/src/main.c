@@ -15,7 +15,6 @@ int main()
 {
 	SetConfigFlags(FLAG_WINDOW_RESIZABLE | FLAG_VSYNC_HINT);
 	InitWindow(1280, 800, "Collision");
-	HideCursor();
 
 	while (!WindowShouldClose())
 	{
@@ -24,12 +23,11 @@ int main()
 		float center_y = GetRenderHeight() / 2 / DPI;
 
 		Vector2 mouse = GetMousePosition();
-		int is_colliding = point_point(to_point(mouse), (Point){.x = center_x, .y = center_y});
+		int is_colliding = point_circle(to_point(mouse), (Point){.x = center_x, .y = center_y}, 100);
 
 		BeginDrawing();
 		ClearBackground(BLACK);
-		DrawCircle(center_x, center_y, 10, RED);
-		DrawCircle(mouse.x, mouse.y, 10, is_colliding ? BLUE : RED);
+		DrawCircle(center_x, center_y, 100, is_colliding ? BLUE : RED);
 		EndDrawing();
 	}
 
