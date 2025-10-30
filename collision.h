@@ -85,7 +85,7 @@ int circle_rectangle(float cx, float cy, float r, float rx, float ry, float rw, 
 
 int point_line(Point c, Point p2, Point p3)
 {
-    float buffer = 0.1;
+    float buffer = 0.01;
     float centerP2 = calculate_distance(c, p2);
     float centerP3 = calculate_distance(c, p3);
     float size = calculate_distance(p2, p3);
