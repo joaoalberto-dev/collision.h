@@ -3,6 +3,14 @@
 #include <stdio.h>
 #include <assert.h>
 
+#define ANSI_COLOR_GREEN "\x1b[32m"
+#define ANSI_COLOR_RESET "\x1b[0m"
+
+void pass_message(char *msg)
+{
+    printf(ANSI_COLOR_GREEN "✓" ANSI_COLOR_RESET " test_%s" ANSI_COLOR_GREEN " passed\n" ANSI_COLOR_RESET, msg);
+}
+
 void test_circle_circle(void)
 {
     Point c1 = {.x = 10, .y = 10};
@@ -12,7 +20,7 @@ void test_circle_circle(void)
     assert(circle_circle(c1, 10, c2, 10) == 0);
     assert(circle_circle(c1, 10, c3, 10) == 1);
 
-    printf("✓ test_circle_circle passed\n");
+    pass_message("circle_circle");
 }
 
 void test_circle_rectangle(void)
@@ -21,7 +29,7 @@ void test_circle_rectangle(void)
     assert(circle_rectangle(10, 10, 10, 50, 50, 10, 10) == 0);
     assert(circle_rectangle(10, 10, 10, 15, 15, 10, 10) == 1);
 
-    printf("✓ test_circle_rectangle passed\n");
+    pass_message("circle_rectangle");
 }
 
 void test_point_circle(void)
@@ -37,7 +45,7 @@ void test_point_circle(void)
     assert(point_circle(p1, c1, r1) == 0);
     assert(point_circle(p2, c2, r2) == 1);
 
-    printf("✓ test_point_circle passed\n");
+    pass_message("point_circle");
 }
 
 void test_point_line(void)
@@ -50,7 +58,7 @@ void test_point_line(void)
     assert(point_line(c1, l1, l2) == 0);
     assert(point_line(c2, l1, l2) == 1);
 
-    printf("✓ test_point_line passed\n");
+    pass_message("point_line");
 }
 
 void test_point_point(void)
@@ -61,7 +69,7 @@ void test_point_point(void)
     assert(point_point(p1, p1) == 1);
     assert(point_point(p1, p2) == 0);
 
-    printf("✓ test_point_point passed\n");
+    pass_message("point_point");
 }
 
 void test_point_rectangle(void)
@@ -71,7 +79,7 @@ void test_point_rectangle(void)
     assert(point_rectangle(p, 20, 20, 10, 10) == 0);
     assert(point_rectangle(p, 5, 5, 10, 10) == 1);
 
-    printf("✓ test_point_rectangle passed\n");
+    pass_message("point_rectangle");
 }
 
 void test_rectangle_rectangle(void)
@@ -80,7 +88,7 @@ void test_rectangle_rectangle(void)
     assert(rectangle_rectangle(0, 0, 10, 10, 20, 20, 10, 10) == 0);
     assert(rectangle_rectangle(15, 15, 10, 10, 20, 20, 10, 10) == 1);
 
-    printf("✓ test_rectangle_rectangle passed\n");
+    pass_message("rectangle_rectangle");
 }
 
 int main(void)
@@ -92,6 +100,4 @@ int main(void)
     test_point_point();
     test_point_rectangle();
     test_rectangle_rectangle();
-
-    printf("✓ All tests passed\n");
 }
