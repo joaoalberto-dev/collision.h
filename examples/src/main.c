@@ -21,24 +21,23 @@ int main()
 	{
 
 		Vector2 mouse = GetMousePosition();
+		Vector2 scale = GetWindowScaleDPI();
+		float finalScale = scale.x ? scale.x : DPI;
 
-		float center_x = GetRenderWidth() / 2 / DPI;
-		float center_y = GetRenderHeight() / 2 / DPI;
-
-		int r1w = 10;
-		int r1h = 10;
+		float center_x = GetRenderWidth() / 2 / finalScale;
+		float center_y = GetRenderHeight() / 2 / finalScale;
 
 		int r2x = center_x - 50;
 		int r2y = center_y - 50;
 		int r2w = 100;
 		int r2h = 100;
 
-		int is_colliding = rectangle_rectangle(mouse.x, mouse.y, r1w, r1h, r2x, r2y, r2w, r2h);
+		int is_colliding = circle_rectangle(mouse.x, mouse.y, 10, 0, 0, 100, 100);
 
 		BeginDrawing();
 		ClearBackground(BLACK);
-		DrawRectangle(r2x, r2y, r2w, r2h, is_colliding ? BLUE : RED);
-		DrawRectangle(mouse.x, mouse.y, r1w, r1h, RED);
+		DrawRectangle(0, 0, 100, 100, is_colliding ? BLUE : RED);
+		DrawCircle(mouse.x, mouse.y, 10, RED);
 		EndDrawing();
 	}
 
