@@ -53,8 +53,8 @@ int rectangle_rectangle(float r1x, float r1y, float r1w, float r1h, float r2x, f
 
 int circle_rectangle(float cx, float cy, float r, float rx, float ry, float rw, float rh)
 {
-    int tx;
-    int ty;
+    int tx = cx;
+    int ty = cy;
 
     if (cx < rx)
         tx = rx;
