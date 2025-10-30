@@ -70,6 +70,19 @@ void test_circle_rectangle(void)
     printf("✓ test_circle_rectangle passed\n");
 }
 
+void test_point_line(void)
+{
+    Point c1 = {.x = 11, .y = 5};
+    Point c2 = {.x = 10, .y = 5};
+    Point l1 = {.x = 10, .y = 0};
+    Point l2 = {.x = 10, .y = 10};
+
+    assert(point_line(c1, l1, l2) == 0);
+    assert(point_line(c2, l1, l2) == 1);
+
+    printf("✓ test_point_line passed\n");
+}
+
 int main(void)
 {
     test_point_point();
@@ -78,6 +91,7 @@ int main(void)
     test_point_rectangle();
     test_rectangle_rectangle();
     test_circle_rectangle();
+    test_point_line();
 
     printf("✓ All tests passed\n");
 }
