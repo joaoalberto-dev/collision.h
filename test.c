@@ -61,6 +61,15 @@ void test_rectangle_rectangle(void)
     printf("✓ test_rectangle_rectangle passed\n");
 }
 
+void test_circle_rectangle(void)
+{
+
+    assert(circle_rectangle(10, 10, 10, 50, 50, 10, 10) == 0);
+    assert(circle_rectangle(10, 10, 10, 15, 15, 10, 10) == 1);
+
+    printf("✓ test_circle_rectangle passed\n");
+}
+
 int main(void)
 {
     test_point_point();
@@ -68,6 +77,7 @@ int main(void)
     test_circle_circle();
     test_point_rectangle();
     test_rectangle_rectangle();
+    test_circle_rectangle();
 
     printf("✓ All tests passed\n");
 }

@@ -14,6 +14,7 @@ int point_circle(Point p, Point c, float r);
 int circle_circle(Point c1, float r1, Point c2, float r2);
 int point_rectangle(Point p, float rx, float ry, float rw, float rh);
 int rectangle_rectangle(float r1x, float r1y, float r1w, float r1h, float r2x, float r2y, float r2w, float r2h);
+int circle_rectangle(float cx, float cy, float r, float rx, float ry, float rw, float rh);
 
 #ifdef COLLISION_IMPLEMENTATION
 
@@ -48,6 +49,28 @@ int point_rectangle(Point p, float rx, float ry, float rw, float rh)
 int rectangle_rectangle(float r1x, float r1y, float r1w, float r1h, float r2x, float r2y, float r2w, float r2h)
 {
     return (r1x + r1w >= r2x && r1x <= r2x + r2w && r1y + r1h >= r2y && r1y <= r2y + r2h);
+}
+
+int circle_rectangle(float cx, float cy, float r, float rx, float ry, float rw, float rh)
+{
+    int tx;
+    int ty;
+
+    if (cx < rx)
+        tx = rx;
+    if (cx > rx + rw)
+        tx = rx + rw;
+
+    if (cy < ry)
+        ty = ry;
+    if (cy > ry + rh)
+        ty = ry + rh;
+
+    float distX = cx - tx;
+    float distY = cy - ty;
+    float distance = sqrt((distX * distX) + (distY * distY));
+
+    return distance <= r;
 }
 
 #endif
