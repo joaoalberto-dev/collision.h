@@ -23,6 +23,20 @@ void test_circle_circle(void)
     pass_message("circle_circle");
 }
 
+void test_circle_line(void)
+{
+    Point l1 = {.x = 10, .y = 10};
+    Point l2 = {.x = 10, .y = 20};
+    Point cr = {.x = 10, .y = 30};
+    Point cr2 = {.x = 10, .y = 20};
+    float r = 2;
+
+    assert(circle_line(cr.x, cr.y, r, l1, l2) == 0);
+    assert(circle_line(cr2.x, cr2.y, r, l1, l2) == 1);
+
+    pass_message("circle_line");
+}
+
 void test_circle_rectangle(void)
 {
 
@@ -94,6 +108,7 @@ void test_rectangle_rectangle(void)
 int main(void)
 {
     test_circle_circle();
+    test_circle_line();
     test_circle_rectangle();
     test_point_circle();
     test_point_line();

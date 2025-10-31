@@ -11,6 +11,7 @@ typedef struct Point
 } Point;
 
 int circle_circle(Point c1, float r1, Point c2, float r2);
+int circle_line(float cx, float cy, float cr, Point l1, Point l2);
 int circle_rectangle(float cx, float cy, float r, float rx, float ry, float rw, float rh);
 int point_circle(Point p, Point c, float r);
 int point_line(Point p1, Point p2, Point p3);
@@ -35,6 +36,33 @@ int circle_circle(Point c1, float r1, Point c2, float r2)
     float distance = sqrt((distX * distX) + (distY * distY));
 
     return (r1 + r2) > distance;
+}
+
+int circle_line(float cx, float cy, float cr, Point l1, Point l2)
+{
+    int start_inside_circle = point_circle(l1, (Point){.x = cx, .y = cy}, cr);
+    int end_inside_circle = point_circle(l2, (Point){.x = cx, .y = cy}, cr);
+
+    if (start_inside_circle || end_inside_circle)
+    {
+        return 1;
+    }
+
+    float size = calculate_distance(l1, l2);
+    float dot = (((cx - l1.x) * (l2.x - l1.x)) + ((cy - l1.y) * (l2.y - l1.y)) / pow(size, 2));
+    float closestX = l1.x + (dot * (l2.x - l1.x));
+    float closestY = l1.y + (dot * (l2.y - l1.y));
+
+    if (!point_line((Point){.x = closestX, .y = closestY}, l1, l2))
+    {
+        return 0;
+    }
+
+    float distX = closestX - cx;
+    float distY = closestY - cy;
+    float distance = sqrt((distX * distX) + (distY * distY));
+
+    return distance <= cr;
 }
 
 int circle_rectangle(float cx, float cy, float r, float rx, float ry, float rw, float rh)
