@@ -26,15 +26,15 @@ int main()
 		float center_x = GetRenderWidth() / 2 / finalScale;
 		float center_y = GetRenderHeight() / 2 / finalScale;
 
-		Vector2 l1 = {.x = center_x, .y = 0};
-		Vector2 l2 = {.x = center_x, .y = center_y * 2};
+		Vector2 l1 = {.x = center_x, .y = 100};
+		Vector2 l2 = {.x = center_x, .y = (center_y * 2) - 100};
 
-		int is_colliding = point_line(to_point(mouse), to_point(l1), to_point(l2));
+		int is_colliding = circle_line(mouse.x, mouse.y, 10, to_point(l1), to_point(l2));
 
 		BeginDrawing();
 		ClearBackground(BLACK);
 		DrawLine(l1.x, l1.y, l2.x, l2.y, is_colliding ? BLUE : RED);
-		DrawCircle(mouse.x, mouse.y, 1, RED);
+		DrawCircle(mouse.x, mouse.y, 10, is_colliding ? BLUE : RED);
 		EndDrawing();
 	}
 
