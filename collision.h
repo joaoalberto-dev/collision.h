@@ -13,6 +13,7 @@ typedef struct Point
 int circle_circle(Point c1, float r1, Point c2, float r2);
 int circle_line(float cx, float cy, float cr, Point l1, Point l2);
 int circle_rectangle(float cx, float cy, float r, float rx, float ry, float rw, float rh);
+int line_line(Point p1, Point p2, Point p3, Point p4);
 int point_circle(Point p, Point c, float r);
 int point_line(Point p1, Point p2, Point p3);
 int point_point(Point p1, Point p2);
@@ -85,6 +86,14 @@ int circle_rectangle(float cx, float cy, float r, float rx, float ry, float rw, 
     float distance = sqrt((distX * distX) + (distY * distY));
 
     return distance <= r;
+}
+
+int line_line(Point p1, Point p2, Point p3, Point p4)
+{
+    float uA = ((p4.x - p3.x) * (p1.y - p3.y) - (p4.y - p3.y) * (p1.x - p3.x)) / ((p4.y - p3.y) * (p2.x - p1.x) - (p4.x - p3.x) * (p2.y - p1.y));
+    float uB = ((p2.x - p1.x) * (p1.y - p3.y) - (p2.y - p1.y) * (p1.x - p3.x)) / ((p4.y - p3.y) * (p2.x - p1.x) - (p4.x - p3.x) * (p2.y - p1.y));
+
+    return uA >= 0 && uA <= 1 && uB >= 0 && uB <= 1;
 }
 
 int point_circle(Point p, Point c, float r)

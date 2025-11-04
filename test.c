@@ -46,6 +46,18 @@ void test_circle_rectangle(void)
     pass_message("circle_rectangle");
 }
 
+void test_line_line(void)
+{
+    Point p1 = {.x = 0, .y = 0};
+    Point p2 = {.x = 10, .y = 10};
+    Point p3 = {.x = 10, .y = 0};
+    Point p4 = {.x = 0, .y = 10};
+    Point p5 = {.x = 20, .y = 10};
+
+    assert(line_line(p1, p2, p3, p4) == 1);
+    assert(line_line(p1, p2, p3, p5) == 0);
+}
+
 void test_point_circle(void)
 {
     Point p1 = {.x = 10, .y = 10};
@@ -110,6 +122,7 @@ int main(void)
     test_circle_circle();
     test_circle_line();
     test_circle_rectangle();
+    test_line_line();
     test_point_circle();
     test_point_line();
     test_point_point();
